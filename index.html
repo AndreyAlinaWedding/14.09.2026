@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Свадьба Андрея и Алины — 14 сентября 2026, Уфа">
+  <title>Андрей & Алина — 14.09.2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header" id="top">
+    <nav class="nav">
+      <a href="#top" class="nav__logo">А & А</a>
+      <button class="nav__toggle" aria-label="Открыть меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__list">
+        <li><a href="#invitation">Приглашение</a></li>
+        <li><a href="#location">Локация</a></li>
+        <li><a href="#program">Программа</a></li>
+        <li><a href="#format">Формат</a></li>
+        <li><a href="#gifts">Подарки</a></li>
+        <li><a href="#gallery">Фото</a></li>
+        <li><a href="#rsvp">RSVP</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content reveal">
+        <p class="hero__pretitle">Мы женимся</p>
+        <h1 class="hero__title">Андрей <span class="hero__amp">&</span> Алина</h1>
+        <p class="hero__date">14 сентября 2026</p>
+        <p class="hero__city">г. Уфа</p>
+        <div class="countdown" id="countdown">
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="days">—</span>
+            <span class="countdown__label">дней</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="hours">—</span>
+            <span class="countdown__label">часов</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="minutes">—</span>
+            <span class="countdown__label">минут</span>
+          </div>
+          <div class="countdown__item">
+            <span class="countdown__value" data-unit="seconds">—</span>
+            <span class="countdown__label">секунд</span>
+          </div>
+        </div>
+        <a href="#invitation" class="btn btn--outline">Подробнее</a>
+      </div>
+    </section>
+
+    <!-- Invitation -->
+    <section class="section" id="invitation">
+      <div class="container reveal">
+        <h2 class="section__title">Дорогие гости</h2>
+        <div class="divider"></div>
+        <p class="section__text">
+          Мы с огромной радостью приглашаем вас разделить с нами один из самых важных дней в нашей жизни.
+          Будем счастливы видеть вас на нашей свадьбе!
+        </p>
+        <p class="section__text section__text--muted">
+          На этом сайте вы найдёте всю необходимую информацию: адрес, как добраться, программу дня и ответы на частые вопросы.
+        </p>
+      </div>
+    </section>
+
+    <!-- Location -->
+    <section class="section section--alt" id="location">
+      <div class="container reveal">
+        <h2 class="section__title">Локация</h2>
+        <div class="divider"></div>
+        <div class="location">
+          <div class="location__info">
+            <h3 class="location__name">Оранжерея «Светоль»</h3>
+            <p class="location__address">Оренбургский тракт, 21а<br>г. Уфа</p>
+            <a
+              href="https://yandex.ru/maps/?text=Оранжерея%20Светоль%2C%20Оренбургский%20тракт%2021а%2C%20Уфа"
+              class="btn btn--primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Открыть в Яндекс Картах</a>
+          </div>
+          <div class="location__map">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?text=Оранжерея%20Светоль%2C%20Оренбургский%20тракт%2021а%2C%20Уфа&z=16"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              allowfullscreen
+              title="Карта — Оранжерея Светоль"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video directions -->
+    <section class="section" id="route">
+      <div class="container reveal">
+        <h2 class="section__title">Как добраться</h2>
+        <div class="divider"></div>
+        <p class="section__text">
+          Мы подготовили видео с маршрутом до места проведения. Замените блок ниже на ваше видео, когда оно будет готово.
+        </p>
+        <div class="video-placeholder" id="route-video">
+          <!-- Замените src на ссылку YouTube / VK Video / или положите файл в videos/route.mp4 -->
+          <div class="video-placeholder__inner">
+            <svg class="video-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            <p>Видео с проездом появится здесь</p>
+            <p class="video-placeholder__hint">YouTube, VK Video или локальный файл</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program -->
+    <section class="section section--alt" id="program">
+      <div class="container reveal">
+        <h2 class="section__title">Программа дня</h2>
+        <div class="divider"></div>
+        <ul class="timeline">
+          <li class="timeline__item">
+            <span class="timeline__time">15:00</span>
+            <div class="timeline__content">
+              <h3>Сбор гостей</h3>
+              <p>Welcome-зона, лёгкие напитки и общение</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__time">16:00</span>
+            <div class="timeline__content">
+              <h3>Церемония</h3>
+              <p>Торжественная часть</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__time">17:00</span>
+            <div class="timeline__content">
+              <h3>Банкет</h3>
+              <p>Ужин, тосты и праздник до позднего вечера</p>
+            </div>
+          </li>
+        </ul>
+        <p class="section__text section__text--muted section__text--center">
+          Время и программа могут быть скорректированы — актуальная информация будет здесь.
+        </p>
+      </div>
+    </section>
+
+    <!-- Format -->
+    <section class="section" id="format">
+      <div class="container reveal">
+        <h2 class="section__title">Формат праздника</h2>
+        <div class="divider"></div>
+        <div class="cards">
+          <article class="card">
+            <h3 class="card__title">Дресс-код</h3>
+            <p class="card__text">
+              Коктейльный / вечерний стиль. Будем рады, если вы выберете наряды в тёплых, спокойных тонах.
+            </p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Атмосфера</h3>
+            <p class="card__text">
+              Камерный праздник в окружении близких людей. Будет много тепла, музыки и танцев.
+            </p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Дети</h3>
+            <p class="card__text">
+              Уточните, пожалуйста, этот пункт — при необходимости мы добавим информацию о детях на празднике.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gifts -->
+    <section class="section section--alt" id="gifts">
+      <div class="container reveal">
+        <h2 class="section__title">Подарки</h2>
+        <div class="divider"></div>
+        <p class="section__text">
+          Самый ценный для нас подарок — ваше присутствие в этот день. Если же вы хотите нас порадовать,
+          мы будем благодарны за вклад в нашу совместную жизнь.
+        </p>
+        <p class="section__text section__text--muted">
+          <!-- Добавьте реквизиты или ссылку на список желаний, когда будете готовы -->
+          Реквизиты или ссылка на список желаний появятся здесь.
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section" id="gallery">
+      <div class="container reveal">
+        <h2 class="section__title">Наши фотографии</h2>
+        <div class="divider"></div>
+        <div class="gallery" id="gallery-grid">
+          <div class="gallery__item gallery__item--placeholder">
+            <span>Фото 1</span>
+          </div>
+          <div class="gallery__item gallery__item--placeholder">
+            <span>Фото 2</span>
+          </div>
+          <div class="gallery__item gallery__item--placeholder">
+            <span>Фото 3</span>
+          </div>
+          <div class="gallery__item gallery__item--placeholder">
+            <span>Фото 4</span>
+          </div>
+          <div class="gallery__item gallery__item--placeholder">
+            <span>Фото 5</span>
+          </div>
+          <div class="gallery__item gallery__item--placeholder">
+            <span>Фото 6</span>
+          </div>
+        </div>
+        <p class="section__text section__text--muted section__text--center">
+          Замените заглушки на ваши фотографии в папке <code>images/</code>
+        </p>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section section--alt" id="rsvp">
+      <div class="container reveal">
+        <h2 class="section__title">Подтверждение присутствия</h2>
+        <div class="divider"></div>
+        <p class="section__text">
+          <strong>RSVP</strong> (répondez s'il vous plaît — «пожалуйста, ответьте») — это форма, в которой гость
+          сообщает, придёт ли на свадьбу. Так мы сможем точнее спланировать банкет и рассадку.
+        </p>
+        <form class="rsvp-form" id="rsvp-form">
+          <div class="form-group">
+            <label for="rsvp-name">Ваше имя и фамилия</label>
+            <input type="text" id="rsvp-name" name="name" required placeholder="Иван Иванов">
+          </div>
+          <div class="form-group">
+            <label>Придёте на свадьбу?</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="yes" required>
+                <span>Да, с радостью!</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="no">
+                <span>К сожалению, не смогу</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rsvp-guests">Количество гостей (включая вас)</label>
+            <select id="rsvp-guests" name="guests">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="rsvp-comment">Комментарий (аллергии, пожелания)</label>
+            <textarea id="rsvp-comment" name="comment" rows="3" placeholder="Необязательно"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Отправить ответ</button>
+          <p class="form-note" id="rsvp-note">
+            Форма пока демонстрационная. Подключим отправку в Telegram, Google Forms или на почту — как вам удобнее.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contacts -->
+    <section class="section" id="contacts">
+      <div class="container reveal">
+        <h2 class="section__title">Контакты</h2>
+        <div class="divider"></div>
+        <p class="section__text section__text--center">
+          По всем вопросам обращайтесь к нам:
+        </p>
+        <div class="contacts">
+          <a href="tel:+79000000000" class="contacts__link">Андрей: +7 (900) 000-00-00</a>
+          <a href="tel:+79000000001" class="contacts__link">Алина: +7 (900) 000-00-01</a>
+        </div>
+        <p class="section__text section__text--muted section__text--center">
+          Замените номера телефонов на реальные.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Андрей & Алина · 14.09.2026 · Уфа</p>
+    <a href="#top" class="footer__top">Наверх ↑</a>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" aria-label="Закрыть">&times;</button>
+    <img class="lightbox__img" src="" alt="">
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
