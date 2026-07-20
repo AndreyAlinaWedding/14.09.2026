@@ -473,7 +473,26 @@ code {
    ============================================ */
 
 .section {
+  position: relative;
   padding: 5rem 0;
+}
+
+/* Line between invitation "pages" */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: max(1.5rem, calc(50% - 400px));
+  right: max(1.5rem, calc(50% - 400px));
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-sand) 12%,
+    var(--color-taupe) 50%,
+    var(--color-sand) 88%,
+    transparent 100%
+  );
 }
 
 .section--alt {
@@ -784,6 +803,43 @@ code {
   line-height: 1.7;
 }
 
+.dresscode-palette {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.dresscode-palette__swatch {
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 50%;
+  border: 1px solid rgba(74, 60, 50, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
+.dresscode-palette__swatch--milk {
+  background: var(--color-milk);
+}
+
+.dresscode-palette__swatch--cream {
+  background: var(--color-cream);
+}
+
+.dresscode-palette__swatch--beige {
+  background: var(--color-beige);
+}
+
+.dresscode-palette__swatch--sand {
+  background: var(--color-sand);
+}
+
+.dresscode-palette__swatch--brown {
+  background: var(--color-brown);
+}
+
 /* ============================================
    RSVP Form
    ============================================ */
@@ -1042,7 +1098,7 @@ code {
   }
 
   .cards {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .radio-group {
