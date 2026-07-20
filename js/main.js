@@ -164,10 +164,10 @@
     return rsvpForm?.querySelector('input[name="attendance"]:checked')?.value || '';
   }
 
-  const MEAL_OPTIONS = [
-    { value: 'meat', label: 'Мясо' },
-    { value: 'fish', label: 'Рыба' },
-    { value: 'poultry', label: 'Птица' },
+  const DRINK_OPTIONS = [
+    { value: 'strong', label: 'Крепкий алкоголь' },
+    { value: 'wine', label: 'Вино' },
+    { value: 'none', label: 'Не пью алкоголь' },
   ];
 
   function renderGuestNameFields(count, declining = false) {
@@ -200,35 +200,35 @@
       row.appendChild(nameField);
 
       if (!declining) {
-        const mealField = document.createElement('div');
-        mealField.className = 'form-group form-group--nested';
+        const drinkField = document.createElement('div');
+        drinkField.className = 'form-group form-group--nested';
 
-        const mealLabel = document.createElement('label');
-        mealLabel.setAttribute('for', `rsvp-guest-meal-${i}`);
-        mealLabel.textContent = 'Что предпочитаете из мясных блюд';
+        const drinkLabel = document.createElement('label');
+        drinkLabel.setAttribute('for', `rsvp-guest-drink-${i}`);
+        drinkLabel.innerHTML = 'Напитки <span class="form-label-hint">(Что вы больше предпочитаете?)</span>';
 
-        const mealSelect = document.createElement('select');
-        mealSelect.id = `rsvp-guest-meal-${i}`;
-        mealSelect.name = `guest_meal_${i}`;
-        mealSelect.required = true;
-        mealSelect.setAttribute('aria-required', 'true');
+        const drinkSelect = document.createElement('select');
+        drinkSelect.id = `rsvp-guest-drink-${i}`;
+        drinkSelect.name = `guest_drink_${i}`;
+        drinkSelect.required = true;
+        drinkSelect.setAttribute('aria-required', 'true');
 
         const placeholder = document.createElement('option');
         placeholder.value = '';
         placeholder.textContent = 'Выберите…';
         placeholder.disabled = true;
         placeholder.selected = true;
-        mealSelect.appendChild(placeholder);
+        drinkSelect.appendChild(placeholder);
 
-        MEAL_OPTIONS.forEach(({ value, label }) => {
+        DRINK_OPTIONS.forEach(({ value, label }) => {
           const option = document.createElement('option');
           option.value = value;
           option.textContent = label;
-          mealSelect.appendChild(option);
+          drinkSelect.appendChild(option);
         });
 
-        mealField.append(mealLabel, mealSelect);
-        row.appendChild(mealField);
+        drinkField.append(drinkLabel, drinkSelect);
+        row.appendChild(drinkField);
       }
 
       rsvpGuestNames.appendChild(row);
@@ -236,9 +236,9 @@
   }
 
   function collectGuestEntries() {
-    return [...rsvpGuestNames.querySelectorAll('.guest-row')].map((row) => ({
+    return [...(rsvpGuestNames?.querySelectorAll('.guest-row') || [])].map((row) => ({
       name: row.querySelector('input[type="text"]')?.value.trim() || '',
-      meal: row.querySelector('select')?.value || '',
+      drink: row.querySelector('select')?.value || '',
     }));
   }
 
@@ -339,9 +339,9 @@
     }
 
     const guestEntries = collectGuestEntries();
-    const mealLabels = Object.fromEntries(MEAL_OPTIONS.map(({ value, label }) => [value, label]));
+    const drinkLabels = Object.fromEntries(DRINK_OPTIONS.map(({ value, label }) => [value, label]));
     const nameInputs = [...(rsvpGuestNames?.querySelectorAll('input[type="text"]') || [])];
-    const mealSelects = [...(rsvpGuestNames?.querySelectorAll('select') || [])];
+    const drinkSelects = [...(rsvpGuestNames?.querySelectorAll('select') || [])];
 
     const emptyNameInput = nameInputs.find((input) => !input.value.trim());
     if (emptyNameInput) {
@@ -351,18 +351,18 @@
     }
 
     if (attending) {
-      const emptyMealSelect = mealSelects.find((select) => !select.value);
-      if (emptyMealSelect) {
-        emptyMealSelect.focus();
-        setRsvpNote('Заполните пожалуйста поле Блюда', 'error');
+      const emptyDrinkSelect = drinkSelects.find((select) => !select.value);
+      if (emptyDrinkSelect) {
+        emptyDrinkSelect.focus();
+        setRsvpNote('Заполните пожалуйста поле Напитки', 'error');
         return;
       }
     }
 
     const guestNames = guestEntries.map((entry) => entry.name).filter(Boolean);
     const namesJoined = guestNames.join('; ');
-    const mealsJoined = attending
-      ? guestEntries.map((entry) => mealLabels[entry.meal] || entry.meal).join('; ')
+    const drinksJoined = attending
+      ? guestEntries.map((entry) => drinkLabels[entry.drink] || entry.drink).join('; ')
       : '';
 
     const data = {
@@ -370,7 +370,7 @@
       guests: attending ? rsvpGuestsSelect?.value || '1' : '0',
       name: namesJoined,
       names: namesJoined,
-      meals: mealsJoined,
+      drinks: drinksJoined,
       comment: rsvpForm.querySelector('[name="comment"]')?.value.trim() || '',
     };
 

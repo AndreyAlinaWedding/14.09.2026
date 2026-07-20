@@ -7,8 +7,8 @@
   <title>Андрей & Алина — 14.09.2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=38">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=63">
 </head>
 <body class="is-envelope-locked">
   <script>
@@ -75,17 +75,15 @@
     <!-- Hero + invitation -->
     <section class="hero" id="top">
       <div class="hero__overlay" aria-hidden="true"></div>
-      <figure class="hero__photo hero__photo--stamp reveal">
-        <div class="hero__photo-stamp">
-          <img
-            src="images/couple.png"
-            alt="Андрей и Алина"
-            width="703"
-            height="1024"
-            decoding="async"
-            fetchpriority="high"
-          >
-        </div>
+      <figure class="hero__photo reveal">
+        <img
+          src="images/couple.jpg?v=1"
+          alt="Андрей и Алина"
+          width="962"
+          height="1400"
+          decoding="async"
+          fetchpriority="high"
+        >
       </figure>
       <div class="hero__content reveal">
         <p class="hero__pretitle">Мы женимся</p>
@@ -105,7 +103,7 @@
           Будем счастливы видеть вас на нашей свадьбе!
         </p>
         <p class="section__text section__text--muted">
-          На этом сайте вы найдёте всю необходимую информацию: адрес, как добраться, программу дня и ответы на частые вопросы.
+          На этом сайте вы найдёте всю необходимую информацию: адрес, программу дня и ответы на частые вопросы.
         </p>
 
         <div class="calendar" aria-label="Календарь сентября 2026 с отмеченным 14 числом">
@@ -184,27 +182,6 @@
       </div>
     </section>
 
-    <!-- Video directions -->
-    <section class="section" id="route">
-      <div class="container reveal">
-        <h2 class="section__title">Как добраться</h2>
-        <div class="divider"></div>
-        <p class="section__text">
-          Мы подготовили видео с маршрутом до места проведения. Замените блок ниже на ваше видео, когда оно будет готово.
-        </p>
-        <div class="video-placeholder" id="route-video">
-          <!-- Замените src на ссылку YouTube / VK Video / или положите файл в videos/route.mp4 -->
-          <div class="video-placeholder__inner">
-            <svg class="video-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polygon points="5 3 19 12 5 21 5 3"/>
-            </svg>
-            <p>Видео с проездом появится здесь</p>
-            <p class="video-placeholder__hint">YouTube, VK Video или локальный файл</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Program -->
     <section class="section section--alt" id="program">
       <div class="container reveal">
@@ -252,25 +229,46 @@
         <h2 class="section__title">Формат праздника</h2>
         <div class="divider"></div>
         <div class="cards">
-          <article class="card">
-            <h3 class="card__title">Дресс-код</h3>
-            <p class="card__text">
-              Коктейльный / вечерний стиль. Будем рады, если вы выберете наряды в тёплых, спокойных тонах —
-              от молочного до коричневого.
-            </p>
-            <div class="dresscode-palette" aria-label="Палитра дресс-кода: от молочного до коричневого">
-              <span class="dresscode-palette__swatch dresscode-palette__swatch--milk" title="Молочный"></span>
-              <span class="dresscode-palette__swatch dresscode-palette__swatch--cream" title="Кремовый"></span>
-              <span class="dresscode-palette__swatch dresscode-palette__swatch--beige" title="Бежевый"></span>
-              <span class="dresscode-palette__swatch dresscode-palette__swatch--sand" title="Песочный"></span>
-              <span class="dresscode-palette__swatch dresscode-palette__swatch--brown" title="Коричневый"></span>
+          <article class="card card--with-photo">
+            <div class="card-media">
+              <div class="card-media__content">
+                <h3 class="card__title">Дресс-код</h3>
+                <p class="card__text">
+                  Коктейльный / вечерний стиль. Будем рады, если вы выберете наряды в тёплых, спокойных тонах —
+                  от молочного до коричневого.
+                </p>
+              </div>
+              <figure class="card-media__photo">
+                <img
+                  src="images/dresscode.jpg"
+                  alt="Примеры образов в палитре дресс-кода"
+                  width="675"
+                  height="1200"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
             </div>
           </article>
-          <article class="card">
-            <h3 class="card__title">Атмосфера</h3>
-            <p class="card__text">
-              Камерный праздник в окружении близких людей. Будет много тепла, музыки и танцев.
-            </p>
+          <article class="card card--with-photo">
+            <div class="card-media">
+              <div class="card-media__content">
+                <h3 class="card__title">Атмосфера</h3>
+                <p class="card__text">
+                  Камерный праздник в окружении близких людей. Будет много тепла, музыки и танцев.
+                </p>
+              </div>
+              <figure class="card-media__photo">
+                <img
+                  src="images/atmosphere.jpg?v=3"
+                  alt="Атмосфера праздника"
+                  width="675"
+                  height="1200"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+            </div>
           </article>
         </div>
       </div>
@@ -296,10 +294,6 @@
       <div class="container reveal">
         <h2 class="section__title">Подтверждение присутствия</h2>
         <div class="divider"></div>
-        <p class="section__text">
-          <strong>RSVP</strong> (répondez s'il vous plaît — «пожалуйста, ответьте») — это форма, в которой гость
-          сообщает, придёт ли на свадьбу. Так мы сможем точнее спланировать банкет и рассадку.
-        </p>
         <form class="rsvp-form" id="rsvp-form" novalidate>
           <div class="form-group">
             <label>Придёте на свадьбу?</label>
@@ -349,6 +343,7 @@
         <div class="contacts">
           <a href="tel:+79373345619" class="contacts__link">Андрей: +7 (937) 334-56-19</a>
           <a href="tel:+79656602849" class="contacts__link">Алина: +7 (965) 660-28-49</a>
+          <a href="tel:+79177865822" class="contacts__link contacts__link--spaced">Координатор Алина: +7 (917) 786-58-22</a>
         </div>
       </div>
     </section>
@@ -375,6 +370,6 @@
 
   </div><!-- /.site-wrap -->
 
-  <script src="js/main.js?v=30"></script>
+  <script src="js/main.js?v=34"></script>
 </body>
 </html>

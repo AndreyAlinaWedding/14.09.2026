@@ -1,14 +1,15 @@
 /**
  * Google Apps Script для RSVP → Google Таблица
  *
- * !!! ВАЖНО: текущего развёртывания недостаточно только «Сохранить».
- * После вставки кода обязательно:
+ * После изменения кода обязательно:
  *   Развернуть → Новое развёртывание → Веб-приложение
  *   (или Управление развёртываниями → ✏️ → Новая версия → Развернуть)
- * Иначе Google продолжит старый код без колонки «Блюда».
  *
  * Заголовки в строке 1 (порядок любой):
- * Дата | Имя | Присутствие | Гости | Блюда | Комментарий
+ * Дата | Имя | Присутствие | Гости | Напитки | Комментарий
+ *
+ * Если колонки «Напитки» ещё нет — добавьте её в строку 1 таблицы.
+ * Старую колонку «Блюда» можно переименовать в «Напитки» или оставить пустой.
  */
 
 function doPost(e) {
@@ -22,12 +23,11 @@ function doPost(e) {
     };
 
     var names = String(data.names || data.name || '');
-    var meals = String(data.meals || data.meal || '');
+    var drinks = String(data.drinks || data.drink || '');
     var attendance = attendanceLabel[data.attendance] || data.attendance || '';
     var guests = String(data.guests || '');
     var comment = String(data.comment || '');
 
-    // Берём минимум 6 колонок, даже если «Блюда» ещё пустая
     var headerCount = Math.max(sheet.getLastColumn(), 6);
     var headers = sheet.getRange(1, 1, 1, headerCount).getValues()[0];
 
@@ -36,35 +36,38 @@ function doPost(e) {
       'имя': names,
       'присутствие': attendance,
       'гости': guests,
-      'блюда': meals,
+      'напитки': drinks,
       'комментарий': comment,
     };
 
     var row = [];
-    var foundMealsCol = false;
+    var foundDrinksCol = false;
+    var matched = 0;
 
     for (var i = 0; i < headers.length; i++) {
       var key = String(headers[i] || '').trim().toLowerCase();
-      if (key === 'блюда') foundMealsCol = true;
-      if (Object.prototype.hasOwnProperty.call(valuesByHeader, key)) {
+      if (key === 'напитки' || key === 'блюда') foundDrinksCol = true;
+      if (key === 'напитки' || key === 'блюда') {
+        row.push(drinks);
+        matched += 1;
+      } else if (Object.prototype.hasOwnProperty.call(valuesByHeader, key)) {
         row.push(valuesByHeader[key]);
+        matched += 1;
       } else {
         row.push('');
       }
     }
 
-    // Если заголовок «Блюда» не найден — фиксированный порядок:
-    // Дата | Имя | Присутствие | Гости | Блюда | Комментарий
-    if (!foundMealsCol) {
-      row = [new Date(), names, attendance, guests, meals, comment];
+    if (matched === 0) {
+      row = [new Date(), names, attendance, guests, drinks, comment];
     }
 
     sheet.appendRow(row);
 
     return jsonResponse({
       ok: true,
-      version: 'meals-v2',
-      received: { names: names, meals: meals },
+      version: 'drinks-v4',
+      received: { names: names, drinks: drinks },
     });
   } catch (err) {
     return jsonResponse({ ok: false, error: String(err) });
@@ -74,7 +77,7 @@ function doPost(e) {
 function doGet() {
   return jsonResponse({
     ok: true,
-    version: 'meals-v2',
+    version: 'drinks-v4',
     message: 'RSVP endpoint ready. If version is missing in response, redeploy.',
   });
 }
