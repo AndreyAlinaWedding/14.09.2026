@@ -76,14 +76,43 @@ body {
     0 0 0 1px rgba(229, 217, 201, 0.4) inset;
 }
 
+html:has(body.is-envelope-locked) {
+  overflow: hidden;
+  height: 100%;
+  height: 100dvh;
+  overscroll-behavior: none;
+}
+
 body.is-envelope-locked {
   overflow: hidden;
   height: 100%;
+  height: 100dvh;
+  overscroll-behavior: none;
+  /* Avoid iOS rubber-band revealing the page behind the gate */
+  touch-action: none;
+}
+
+body.is-envelope-locked .site-wrap {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 html.envelope-skip body.is-envelope-locked {
   overflow: visible;
   height: auto;
+  touch-action: auto;
+  overscroll-behavior: auto;
+}
+
+html.envelope-skip:has(body.is-envelope-locked) {
+  overflow: visible;
+  height: auto;
+  overscroll-behavior: auto;
+}
+
+html.envelope-skip body.is-envelope-locked .site-wrap {
+  visibility: visible;
+  pointer-events: auto;
 }
 
 html.envelope-skip .envelope-gate {
@@ -1161,8 +1190,12 @@ code {
   inset: 0;
   z-index: 1000;
   width: 100%;
+  /* svh first: covers the visible screen even with mobile browser chrome */
   height: 100%;
+  height: 100svh;
   height: 100dvh;
+  min-height: 100%;
+  min-height: -webkit-fill-available;
   overflow: hidden;
   cursor: pointer;
   transition: opacity 0.7s ease, visibility 0.7s ease;
@@ -1192,10 +1225,10 @@ code {
   visibility: hidden;
 }
 
-/* Solid cream backdrop */
+/* Solid cream backdrop — extended past edges for mobile URL-bar / safe-area gaps */
 .envelope-gate__bg {
   position: absolute;
-  inset: 0;
+  inset: -25vh 0;
   background: var(--color-stage);
 }
 
